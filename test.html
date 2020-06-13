@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Massively by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript> -->
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>This is<br />
+						Massively</h1>
+						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
+						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="test.html" class="logo">Massively</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="index.html">This is Massively</a></li>
+							<!-- <li><a href="generic.html">Generic Page</a></li>
+							<li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h2><a href="#">And this is a<br />
+									massive headline</a></h2>
+									<!-- <p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
+									facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
+									amet nullam sed etiam veroeros.</p> -->
+									<!-- this table or the other -->
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+													<th>Price</th>
+													<th>modifier</th>
+													<th>supprimer</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!-- start repeat -->
+											<tr id="ligne" class="ligne">  <!-- class is still not set correctly -->
+													<td id="tab1"></td>
+													<td>Ante turpis integer aliquet porttitor.</td>
+													<td>29.99</td>
+													<td><button onclick="" class="button primary small">Modifier</button></td>
+													<td><button class="button small">Supprimer</button></td>
+
+												</tr>
+												<!-- end repeat -->
+
+											</tbody>
+											<tfoot>
+												<tr>
+													<td colspan="1"></td>
+													<td ><button onclick="openForm()" class="button primary fit small">ajouter</button></td>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+
+								</header>
+								<!-- <a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a> -->
+								<ul class="actions special">
+									<li><a href="#" class="button large">Full Story</a></li>
+								</ul>
+							</article>
+
+						<!-- Posts -->
+
+							<section class="post">
+
+									<!-- ============= Test form ===============-->
+
+								<!-- <div class="popup"> -->
+									<!-- this is  the popup form that shos when you click the button ajouter -->
+									<div class="row gtr-uniform ajouter" id="addform">
+										
+										<div class="ajouterform">
+											<header class="major col-12">
+												<h2>Form</h2>
+											</header>
+											<form >
+												<div class="col-6 col-12-xsmall center">
+												
+													<input  type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+												
+												</div>
+												<div class="col-6 col-12-xsmall center">
+													<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+												</div>
+												<!-- liste multiple option -->
+												<div class="col-12 center">
+													<select name="demo-category" id="demo-category">
+														<option value="">- Category -</option>
+														<option value="1">Manufacturing</option>
+														<option value="1">Shipping</option>
+														<option value="1">Administration</option>
+														<option value="1">Human Resources</option>
+													</select>
+												</div>
+												<!-- radio -->
+												<div class="col-4 col-12-small">
+													<input type="radio" id="demo-priority-low" name="demo-priority" checked>
+													<label for="demo-priority-low">Low</label>
+												</div>
+												<div class="col-4 col-12-small">
+													<input type="radio" id="demo-priority-normal" name="demo-priority">
+													<label for="demo-priority-normal">Normal</label>
+												</div>
+												<div class="col-4 col-12-small">
+													<input type="radio" id="demo-priority-high" name="demo-priority">
+													<label for="demo-priority-high">High</label>
+												</div>
+												<!-- checkbox -->
+												<div class="col-6 col-12-small">
+													<input type="checkbox" id="demo-copy" name="demo-copy">
+													<label for="demo-copy">Email me a copy</label>
+												</div>
+												<div class="col-6 col-12-small">
+													<input type="checkbox" id="demo-human" name="demo-human" checked>
+													<label for="demo-human">I am a human</label>
+												</div>
+												<!-- this is text area -->
+												<div class="col-12">
+													<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+												</div>
+												<!-- Break -->
+												<div class="col-12">
+													<ul class="actions">
+														<li><input type="submit" value="Send Message" class="primary" /></li>
+														<li><input type="reset" value="Reset" /></li>
+														
+														<li><input type="button" value="exit" onclick="closeForm()" /></li>
+														<div onclick="closeForm()" class="closeform">+</div>
+													</ul>
+												</div>
+											</form>
+										</div>
+									</div>
+									<!-- this is the scond form that shows always -->
+
+									<!-- </div> -->
+								<!-- end test  -->
+								
+							</section>
+							
+								
+						
+
+					</div>
+					
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts  -->
+		<!-- these are all the scrit used the script that i wrote is assets/js/myapp.js -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/myapp.js"></script>
+
+	</body>
+</html>	

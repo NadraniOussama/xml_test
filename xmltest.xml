@@ -1,0 +1,7 @@
+<root>
+	<Personne>
+		<nom>oussma</nom>
+		<description>hello this is me</description>
+		<salary>1783</salary>
+	</Personne>
+</root>
