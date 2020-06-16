@@ -41,24 +41,77 @@ function Personne(nom , desciption , salary)
   }
 }
 
-var per1 = new Personne("oussama" ,"description" ,300);
 // change html part
-ligne = document.getElementById("ligne");
-ligne.children[0].innerHTML = per1.getName();
-ligne.children[1].innerHTML = per1.description;
+// START boucle for in here
 
-var xmlDoc = document.implementation.createDocument(null, "xmltest.xml");
-var xml = "<root><Personne><nom>oussma</nom><description>hello this is me</description><salary>1783</salary></Personne></root>";
+
+function get_XML ( ){
+  return localStorage.getItem("xml")
+} 
+// Dim xDoc As New XmlDocument;
+
+
+// Dim xNode As XmlNode = xDoc.AppendChild(xDoc.CreateElement("xml"))
+
+
+// Dim xAuthor As XmlNode = xNode.AppendChild(xDoc.CreateElement("author"))
+// xAuthor.InnerText = "hey"
+function set_XML(){
+  
+localStorage.setItem("xml", "xml_doc_change");  
+}
+
+// START set HTML function
+set_XML()
+xmlString = get_XML()
+listeHTML = document.querySelector('#liste');
+for(i=0 ; i<10 ; i++)
+{
+    line = document.createElement("tr");
+    col1 = document.createElement("td");
+    col2 = document.createElement("td");
+    col3 = document.createElement("td");
+    col4 = document.createElement("td");
+    col5 = document.createElement("td");
+    col1.innerHTML = xmlString;
+    col2.innerHTML = xmlString + " description";
+    col2.style.width = "300px"
+    col3.innerHTML = "hey";
+
+        modifierButton = document.createElement("button");
+        modifierButton.class = "button primary small";
+        modifierButton.innerHTML = "modifier";
+        modifierButton.onclick = function(){}; // TODO  =========================
+    col4.appendChild(modifierButton);
+    col4.style.width = "10px";
+        supprimerButton = document.createElement("button");
+        supprimerButton.class = "button small";
+        supprimerButton.innerHTML = "supprimer";
+
+        supprimerButton.onclick = "something usfull"; // TODO  =========================
+    col5.appendChild(supprimerButton);
+    col5.style.width = "10px";
+    line.appendChild(col1);
+    line.appendChild(col2);
+    line.appendChild(col3);
+    line.appendChild(col4);
+    line.appendChild(col5);
+
+    listeHTML.appendChild(line);
+}
+// END set function
+
+// first test
+// ligne = document.getElementById("ligne");
+// ligne.children[0].innerHTML = per1.getName();
+// ligne.children[1].innerHTML = per1.description;
+// ligne.children[4].class = "button small";
+
+// var xmlDoc = document.implementation.createDocument(null, "xmltest.xml");
+var xml = "<root></root>";
 // var parser = new DOMParser(),
 //   xmlDoc = parser.parseFormString(xml, "text/xml");
-// alert(xmlDoc.getElementsByTagName("nom")firstchild());
-alert(node);
-alert(xmlDoc);
-
+set_XML();
 alert("hey");
 
-
-
-
-
-
+ 

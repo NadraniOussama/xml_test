@@ -67,20 +67,21 @@
 												<tr>
 													<th>Name</th>
 													<th>Description</th>
-													<th>Price</th>
+													<th>Score</th>
 													<th>modifier</th>
 													<th>supprimer</th>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody id= "liste">
 												<!-- start repeat -->
 											<tr id="ligne" class="ligne">  <!-- class is still not set correctly -->
-													<td id="tab1"></td>
+												<!-- test tab -->
+													<!-- <td></td>
 													<td>Ante turpis integer aliquet porttitor.</td>
 													<td>29.99</td>
 													<td><button onclick="" class="button primary small">Modifier</button></td>
 													<td><button class="button small">Supprimer</button></td>
-
+ -->
 												</tr>
 												<!-- end repeat -->
 
@@ -88,7 +89,7 @@
 											<tfoot>
 												<tr>
 													<td colspan="1"></td>
-													<td ><button onclick="openForm()" class="button primary fit small">ajouter</button></td>
+													<td colspan="3"><button onclick="openForm()" class="button primary fit small">ajouter</button></td>
 												</tr>
 											</tfoot>
 										</table>
@@ -115,7 +116,7 @@
 											<header class="major col-12">
 												<h2>Form</h2>
 											</header>
-											<form >
+											<form>
 												<div class="col-6 col-12-xsmall center">
 												
 													<input  type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
@@ -194,6 +195,7 @@
 
 		<!-- Scripts  -->
 		<!-- these are all the scrit used the script that i wrote is assets/js/myapp.js -->
+			<script src="assets/js/myapp.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -201,7 +203,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/myapp.js"></script>
 
 	</body>
 </html>	
