@@ -143,10 +143,10 @@ function updateHTMLListe()
 {
   xmlDOM = "";
   listeHTML = document.querySelector('#liste');
+  xmlDOM = get_XML("xml_lovcal_doc");
   for(i=0 ; i<localStorage.length ; i++)
   {
     
-    xmlDOM = get_XML(i);
    
     line = document.createElement("tr");
     line.id = i+"_car";
@@ -159,21 +159,18 @@ function updateHTMLListe()
     col6 = document.createElement("td");
     col7 = document.createElement("td");
 
-    col1.innerHTML = xmlDOM.getElementsByTagName("car")[0].childNodes[0].textContent;
-    col2.innerHTML = xmlDOM.getElementsByTagName("car")[0].childNodes[1].textContent;
+    col1.innerHTML = xmlDOM.getElementsByTagName("car")[i].childNodes[0].textContent;
+    col2.innerHTML = xmlDOM.getElementsByTagName("car")[i].childNodes[1].textContent;
     col2.style.width = "300px"
-    col3.innerHTML = xmlDOM.getElementsByTagName("car")[0].childNodes[2].textContent;
-    col4.innerHTML = xmlDOM.getElementsByTagName("car")[0].childNodes[4].textContent;
-    col5.innerHTML = xmlDOM.getElementsByTagName("car")[0].childNodes[3].textContent;
+    col3.innerHTML = xmlDOM.getElementsByTagName("car")[i].childNodes[2].textContent;
+    col4.innerHTML = xmlDOM.getElementsByTagName("car")[i].childNodes[4].textContent;
+    col5.innerHTML = xmlDOM.getElementsByTagName("car")[i].childNodes[3].textContent;
 
         modifierButton = document.createElement("button");
         modifierButton.class = "button primary small";
         modifierButton.innerHTML = "modifier";
         // alert("this is id : == > "+i);
-        modifierButton.onclick = function(){ 
-            modifier(i);
-
-        ; }; // TODO  =========================
+        modifierButton.onclick = function(){ modifier(i+""); }; // TODO  =========================
 
     col6.appendChild(modifierButton);
     col6.style.width = "10px";
