@@ -65,29 +65,18 @@
 										<table class="alt">
 											<thead>
 												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Score</th>
+													<th>Make</th>
+													<th>Model</th>
+													<th>Year</th>
+													<th>mileage</th>
+													<th>Exterior Color</th>
+
 													<th>modifier</th>
 													<th>supprimer</th>
 												</tr>
 											</thead>
 											<tbody id= "liste">
 												<!-- start repeat -->
-											<tr id="ligne" class="ligne">  <!-- class is still not set correctly -->
-
-												<!-- test tab -->
-													<!-- 
-
-													<td></td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-													<td><button onclick="" class="button primary small">Modifier</button></td>
-													<td><button class="button small">Supprimer</button></td>
-
- 													-->
-
-												</tr>
 												<!-- end repeat -->
 
 											</tbody>
@@ -124,52 +113,43 @@
 											<form>
 												<div class="col-6 col-12-xsmall center">
 												
-													<input  type="text" required name="demo-name" id="car-name" value="" placeholder="Name" />
-												
+													<input  type="text" required name="demo-name" id="car-name" value="" placeholder="Make" />
+													
+													<th>Exterior Color</th>
 												</div>
 												<div class="col-6 col-12-xsmall center">
-													<input type="email" name="demo-email" id="car-email" value="" placeholder="Email" />
+													<input type="text" name="demo-email" id="car-model" value="" placeholder="Model" />
 												</div>
 												<!-- liste multiple option -->
-												<div class="col-12 center">
+												<div class="col-4 col-12-small center">
+												<!-- 
 													<select name="demo-category" id="car-category">
 														<option value="">- Category -</option>
 														<option value="1">Manufacturing</option>
 														<option value="1">Shipping</option>
 														<option value="1">Administration</option>
-														<option value="1">Human Resources</option>
+														<option value="1">Human Resources</option> -->
+														<input type="date" name="demo-year" id="car-date" value=""  />	
 													</select>
 												</div>
-												<!-- radio -->
-												<div class="col-4 col-12-small">
-													<input type="radio" id="car-priority-low" name="demo-priority" checked>
-													<label for="demo-priority-low">Low</label>
+												<hr>
+												<div class="col-6 col-12-xsmall center">
+													<input type="number" name="demo-email" id="car-mileage" value="" placeholder="mileage" />
 												</div>
-												<div class="col-4 col-12-small">
-													<input type="radio" id="car-priority-normal" name="demo-priority">
-													<label for="demo-priority-normal">Normal</label>
-												</div>
-												<div class="col-4 col-12-small">
-													<input type="radio" id="car-priority-high" name="demo-priority">
-													<label for="demo-priority-high">High</label>
-												</div>
-												<!-- checkbox -->
-												<div class="col-6 col-12-small">
-													<input type="checkbox" id="car-copy" name="demo-copy">
-													<label for="demo-copy">Email me a copy</label>
-												</div>
-												<div class="col-6 col-12-small">
-													<input type="checkbox" id="car-human" name="demo-human" checked>
-													<label for="demo-human">I am a human</label>
-												</div>
+												
 												<!-- this is text area -->
-												<div class="col-12">
-													<textarea name="demo-message" id="car-message" placeholder="Enter your message" rows="6"></textarea>
+												<div class="col-6 col-12-xsmall center">
+													<input type="color" name="demo-color" id="car-bgcolor" value=""  />
+													<label for="demo-color">Exterior Color</label>
 												</div>
+												<div class="col-12">
+													<textarea name="demo-message" id="car-message" placeholder="Enter your comment" rows="6"></textarea>
+												</div>
+												
 												<!-- Break -->
 												<div class="col-12">
 													<ul class="actions">
-														<li><input type="submit" onclick="set_form()" value="Send Message" class="primary" /></li>
+														<li><input type="submit" id="submit" onclick="set_form()" value="Send Message" class="primary" /></li>
 														<li><input type="reset" value="Reset" /></li>
 														
 														<li><input type="button" value="exit" onclick="closeForm()" /></li>

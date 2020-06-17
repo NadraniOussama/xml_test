@@ -53,46 +53,84 @@ function get_XML (id){
         xmlString = "undefined"
       else xmlString = "error"
     }
-  return xmlString;
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(xmlString,"text/xml");
+  // return xmlString;
+  return xmlDoc;
 } 
-// Dim xDoc As New XmlDocument;
 
+function modifier(id)
+{ 
+  openForm();
+
+
+  document.getElementById('submit').onclick = function(){
+    xmlRowString =  document.getElementById("car-name").value;
+    // nums = id.split('_'); 
+    set_XML(id, xmlRowString);
+
+    document.getElementById('submit').onclick = function (){ set_form() };
+  };
+
+}
 
 // Dim xNode As XmlNode = xDoc.AppendChild(xDoc.CreateElement("xml"))
 
 
 // Dim xAuthor As XmlNode = xNode.AppendChild(xDoc.CreateElement("author"))
 // xAuthor.InnerText = "hey"
+//  all the setters
+
 function set_local()
 {
-  // localStorage.clear()
-  list = document.getElementsByClassName("car");
-  localStorage_lenght = localStorage.length;
-  alert("hey hey hey : " + (localStorage_length));
-  for (i=0; i<localStorage_length; i++)
+
+  for (i=0; i<localStorage.length; i++)
   {
-    // names = list[i].childNodes[i].innerHTML ;
-    // document.getElementById(i+"_car").innerHTML;
-    set_XML(""+i);
+    name = document.getElementById(i+'_car').childNodes[0].innerHTML;
+    name_car =  document.getElementById(i+'_car').childNodes[1].innerHTML;
+    model_car =  document.getElementById(i+'_car').childNodes[2].innerHTML;
+    date_car =  document.getElementById(i+'_car').childNodes[3].innerHTML;
+    excolor_car =  document.getElementById(i+'_car').childNodes[4].innerHTML;
+
+    xml_str = "<car><make>"+name_car+"</make>";
+    xml_str += "<model>"+ model_car+ "</model>";
+    xml_str += "<date>"+ date_car+ "</date>";
+    xml_str += "<excolor>"+excolor_car+"</excolor>"
+
+    xml_str += "</car>"
+    set_XML(i, xml_str);
   }
+
 }
 
-function set_form(){
+function set_form()
+{
   name_car =  document.getElementById("car-name").value;
-  // extract all element from from 
-  // to xml 
-  xml_str = "<car><name>"+name_car+"</name>";
+  model_car =  document.getElementById("car-model").value;
+  date_car =  document.getElementById("car-date").value;
+  bgcolor_car =  document.getElementById("car-bgcolor").value;
+  mileage_car =  document.getElementById("car-mileage").value;
+
+  // extract all element from from  html
+  // to xml  
+  // <th>Make</th> <th>Model</th> <th>Year</th> <th>mileage</th>   <th>Exterior Color</th>
+
+  xml_str = "<car><make>"+name_car+"</make>";
+  xml_str += "<model>"+ model_car+ "</model>";
+  xml_str += "<date>"+ date_car+ "</date>";
+  xml_str += "<bgcolor>"+bgcolor_car+"</bgcolor>";
+  xml_str += "<mileage>"+mileage_car+"</mileage>";
+
 
 
   xml_str += "</car>"
   //  then save
-  set_XML(xml_str, null);
+  set_XML(localStorage.length, xml_str);
+  
 }
 // localStorage.clear() // clear
 
-
-
-function set_XML(xmlRowString, pos)
+function set_XML(pos, xmlRowString)
 {
   if (typeof(localStorage) == 'undefined' ) 
   {
@@ -102,14 +140,9 @@ function set_XML(xmlRowString, pos)
   {   
     try                          
     { 
-      if(pos !==null  )
-      {
-        localStorage.setItem(pos, xmlRowString);
-      }
-      else 
-      {
-        localStorage.setItem(localStorage.length, xmlRowString);
-      }
+           
+      localStorage.setItem(pos, xmlRowString);
+      
     } 
     catch (e) 
     {
@@ -121,8 +154,69 @@ function set_XML(xmlRowString, pos)
     }
   }
 }
+
 // START set HTML function
-// set_XML();
+
+function updateHTMLListe()
+{
+  xmlString = "";
+  listeHTML = document.querySelector('#liste');
+  for(i=0 ; i<localStorage.length ; i++)
+  {
+    
+    xmlString = get_XML(i);
+   
+    line = document.createElement("tr");
+    line.id = i+"_car";
+    line.class = "car";
+    col1 = document.createElement("td");
+    col2 = document.createElement("td");
+    col3 = document.createElement("td");
+    col4 = document.createElement("td");
+    col5 = document.createElement("td");
+    col6 = document.createElement("td");
+    col7 = document.createElement("td");
+
+    col1.innerHTML = xmlString.getElementsByTagName("car")[0].childNodes[0].textContent;
+    col2.innerHTML = xmlString.getElementsByTagName("car")[0].childNodes[1].textContent;
+    // col2.id = i+"_id";
+    col2.style.width = "300px"
+    col3.innerHTML = xmlString.getElementsByTagName("car")[0].childNodes[2].textContent;
+    col4.innerHTML = xmlString.getElementsByTagName("car")[0].childNodes[4].textContent;
+    col5.innerHTML = xmlString.getElementsByTagName("car")[0].childNodes[3].textContent;
+
+
+
+        modifierButton = document.createElement("button");
+        modifierButton.class = "button primary small";
+        modifierButton.innerHTML = "modifier";
+
+        modifierButton.onclick = function(){ modifier(i); }; // TODO  =========================
+
+    col6.appendChild(modifierButton);
+    col6.style.width = "10px";
+        supprimerButton = document.createElement("button");
+        supprimerButton.class = "button small";
+          supprimerButton.innerHTML = "supprimer";
+
+        supprimerButton.onclick = function(){}; // TODO  =========================
+
+    col7.appendChild(supprimerButton);
+    col7.style.width = "10px";
+    line.appendChild(col1);
+    line.appendChild(col2);
+    line.appendChild(col3);
+    line.appendChild(col4);
+    line.appendChild(col5);
+    line.appendChild(col6);
+    line.appendChild(col7);
+
+
+
+    listeHTML.append(line);
+  }
+}
+
 try{
   if(window.DOMParser){
     var parser = new DOMParser() ; 
@@ -133,74 +227,17 @@ try{
     xmlDoc.async=false;
     xmlDoc.loadXML(localStorageRow);
   }
+
 }catch (error){
   alert(error);
 }
 // END shit chat
 
-// START HTML DISPLAY 
-function updateHTMLListe()
-{
-  xmlString = ""
-  listeHTML = document.querySelector('#liste');
-  for(i=0 ; i<localStorage.length ; i++)
-  {
-    
-    xmlString = get_XML(i);
-
-    // needs some refining
-   
-    line = document.createElement("tr");
-    line.id = i+"_car";
-    line.class = "car";
-    col1 = document.createElement("td");
-    col2 = document.createElement("td");
-    col3 = document.createElement("td");
-    col4 = document.createElement("td");
-    col5 = document.createElement("td");
-    col1.innerHTML = i;
-    col2.innerHTML = xmlString + " description";
-    col2.style.width = "300px"
-    col3.innerHTML = "hey";
-
-        modifierButton = document.createElement("button");
-        modifierButton.class = "button primary small";
-        modifierButton.innerHTML = "modifier";
-        // modifierButton.style.width = '120px';
-        
-        modifierButton.onclick = function(){}; // TODO  =========================
-
-    col4.appendChild(modifierButton);
-    col4.style.width = "10px";
-        supprimerButton = document.createElement("button");
-        supprimerButton.class = "button small";
-        supprimerButton.innerHTML = "supprimer";
-        // supprimerButton.style.width = '120px';
-
-
-        supprimerButton.onclick = function(){}; // TODO  =========================
-
-    col5.appendChild(supprimerButton);
-    col5.style.width = "10px";
-    line.appendChild(col1);
-    line.appendChild(col2);
-    line.appendChild(col3);
-    line.appendChild(col4);
-    line.appendChild(col5);
-
-    listeHTML.appendChild(line);
-  }
-}
-
-
-
 // var xmlDoc = document.implementation.createDocument(null, "xmltest.xml");
 // var parser = new DOMParser(),
 //   xmlDoc = parser.parseFormString(xml, "text/xml");
 
-
 updateHTMLListe();
-set_local()
 
 // test if it works 
 alert("donne");
