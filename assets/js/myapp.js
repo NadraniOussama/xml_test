@@ -43,7 +43,7 @@ function Personne(nom , desciption , salary)
 
 // change html part
 // START boucle for in here
-
+localStorage_lenght = localStorage.length
 
 function get_XML (id){
   xmlString = localStorage.getItem(id);
@@ -63,6 +63,20 @@ function get_XML (id){
 
 // Dim xAuthor As XmlNode = xNode.AppendChild(xDoc.CreateElement("author"))
 // xAuthor.InnerText = "hey"
+function set_local()
+{
+  // localStorage.clear()
+  list = document.getElementsByClassName("car");
+  localStorage_lenght = localStorage.length;
+  alert("hey hey hey : " + (localStorage_length));
+  for (i=0; i<localStorage_length; i++)
+  {
+    // names = list[i].childNodes[i].innerHTML ;
+    // document.getElementById(i+"_car").innerHTML;
+    set_XML(""+i);
+  }
+}
+
 function set_form(){
   name_car =  document.getElementById("car-name").value;
   // extract all element from from 
@@ -72,10 +86,13 @@ function set_form(){
 
   xml_str += "</car>"
   //  then save
-  set_XML(xml_str);
+  set_XML(xml_str, null);
 }
+// localStorage.clear() // clear
 
-function set_XML(xmlRowString)
+
+
+function set_XML(xmlRowString, pos)
 {
   if (typeof(localStorage) == 'undefined' ) 
   {
@@ -85,8 +102,14 @@ function set_XML(xmlRowString)
   {   
     try                          
     { 
-      // alert(localStorage.length);
-      localStorage.setItem(localStorage.length, xmlRowString);
+      if(pos !==null  )
+      {
+        localStorage.setItem(pos, xmlRowString);
+      }
+      else 
+      {
+        localStorage.setItem(localStorage.length, xmlRowString);
+      }
     } 
     catch (e) 
     {
@@ -98,10 +121,6 @@ function set_XML(xmlRowString)
     }
   }
 }
-
-
-
-
 // START set HTML function
 // set_XML();
 try{
@@ -110,17 +129,19 @@ try{
     // xmlDoc = parser.parseFormString("<root></root>", "text/xml");
   }
   else{
-    xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+    xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
     xmlDoc.async=false;
     xmlDoc.loadXML(localStorageRow);
   }
 }catch (error){
   alert(error);
 }
+// END shit chat
 
 // START HTML DISPLAY 
-function updateHTMLListe(){
-  xmlString = "nulls"
+function updateHTMLListe()
+{
+  xmlString = ""
   listeHTML = document.querySelector('#liste');
   for(i=0 ; i<localStorage.length ; i++)
   {
@@ -129,8 +150,9 @@ function updateHTMLListe(){
 
     // needs some refining
    
-  
     line = document.createElement("tr");
+    line.id = i+"_car";
+    line.class = "car";
     col1 = document.createElement("td");
     col2 = document.createElement("td");
     col3 = document.createElement("td");
@@ -144,6 +166,8 @@ function updateHTMLListe(){
         modifierButton = document.createElement("button");
         modifierButton.class = "button primary small";
         modifierButton.innerHTML = "modifier";
+        // modifierButton.style.width = '120px';
+        
         modifierButton.onclick = function(){}; // TODO  =========================
 
     col4.appendChild(modifierButton);
@@ -151,6 +175,8 @@ function updateHTMLListe(){
         supprimerButton = document.createElement("button");
         supprimerButton.class = "button small";
         supprimerButton.innerHTML = "supprimer";
+        // supprimerButton.style.width = '120px';
+
 
         supprimerButton.onclick = function(){}; // TODO  =========================
 
@@ -165,19 +191,16 @@ function updateHTMLListe(){
     listeHTML.appendChild(line);
   }
 }
-// set_XML("hello");
-updateHTMLListe();
-// END HTML DISPLAY
-// END set function
+
 
 
 // var xmlDoc = document.implementation.createDocument(null, "xmltest.xml");
-var xml = "<root></root>";
 // var parser = new DOMParser(),
 //   xmlDoc = parser.parseFormString(xml, "text/xml");
 
 
-
+updateHTMLListe();
+set_local()
 
 // test if it works 
 alert("donne");
