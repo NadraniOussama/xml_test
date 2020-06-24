@@ -31,7 +31,7 @@ function supprimer(id_c){
   var line_elem =  document.getElementById(id_c);
   line_elem.parentNode.removeChild(line_elem);
   
-  localStorage.clear();
+  // localStorage.clear();
   set_local();
 }
 
@@ -65,7 +65,8 @@ function set_local()
       }
     })(i)
   }
-  // localStorage.removeItem(i);
+  alert("to dell " + (i-1));
+  localStorage.removeItem(i-1);
 
 }
 
