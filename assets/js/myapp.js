@@ -13,7 +13,8 @@ function closeForm(){
 // START boucle for in here
 localStorage_lenght = localStorage.length
 
-function get_XML (id){
+function get_XML (id)
+{
   xmlString = localStorage.getItem(id);
   if (xmlString == null )
     {
@@ -49,7 +50,7 @@ function set_local()
         mileage_car =  document.getElementById(index+'_car').childNodes[3].innerHTML;
 
         bgcolor_car =  document.getElementById(index+'_car').childNodes[4].innerHTML;
-
+        // START repeat init xml
         xml_str = "<car><make>"+name_car+"</make>";
         xml_str += "<model>"+ model_car+ "</model>";
         xml_str += "<date>"+ date_car+ "</date>";
@@ -59,7 +60,9 @@ function set_local()
         xml_str += "</car>"
         alert(xml_str+" \n\t =>"+j);
         save_XML(j, xml_str);
+        // END repeat init xml
         j += 1;
+
       }catch(err){
 
       }
